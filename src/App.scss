@@ -1,14 +1,16 @@
 .container {
   max-width: 1100px;
-  // display: flex;
-  // flex-direction: column;
-  // text-align: center;
-  text-align: center;
+  margin: 0 auto;
   font-family: "Inter", sans-serif;
-  border: 1px solid rgb(146, 85, 85);
+
+  @media screen and (max-width: 768px) {
+    width: 95%;
+  }
 }
 
 $base-color: rgba(78, 20, 140, 1);
+$base-color-ligth: rgba(133, 138, 227, 1);
+$base-bg-color: rgba(232, 235, 242, 1);
 
 $tablet: 768px;
 $mobile: 425px;

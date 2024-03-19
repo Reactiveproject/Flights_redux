@@ -7,7 +7,7 @@ export default function Header() {
       <div className={cl.headerLogo}>
         <img src={logo} alt="header logo" />
       </div>
-      <div className={cl.headerText}>Поиск авиабеилетов</div>
+      <div className={cl.headerText}>Поиск авиабилетов</div>
     </div>
   );
 }

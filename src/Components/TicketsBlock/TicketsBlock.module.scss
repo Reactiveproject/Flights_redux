@@ -1,0 +1,28 @@
+@import "../../App.scss";
+
+.ticketsBlock {
+  display: flex;
+  width: 727px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  @media screen and (max-width: 850px) {
+    gap: 35px;
+  }
+}
+
+.button {
+  background-color: $base-color;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 10px;
+  width: 100%;
+  height: 62px;
+  &:hover {
+    background-color: $base-color-ligth;
+  }
+}
