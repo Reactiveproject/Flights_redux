@@ -1,4 +1,4 @@
-export interface Ticket {
+export interface ITicket {
   id: number;
   from: string;
   to: string;
@@ -7,7 +7,7 @@ export interface Ticket {
   currency: string;
   time: TicketTime;
   duration: number;
-  date: string;
+  date?: string;
   connectionAmount: number | null;
 }
 export interface TicketTime {

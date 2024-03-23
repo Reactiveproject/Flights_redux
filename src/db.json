@@ -1,0 +1,94 @@
+{
+  "fligths": [
+    {
+      "id": 1,
+      "from": "SVO",
+      "to": "BEL",
+      "company": "Pobeda",
+      "price": 100,
+      "currency": "RUB",
+      "time": {
+        "startTime": "11:00",
+        "endTime": "14:00"
+      },
+      "duration": 1,
+      "date": "22.11.24",
+      "connectionAmount": 1
+    },
+    {
+      "id": 2,
+      "from": "KAZ",
+      "to": "CDG",
+      "company": "Red Wings",
+      "price": 200,
+      "currency": "RUB",
+      "time": {
+        "startTime": "11:00",
+        "endTime": "15:00"
+      },
+      "duration": 3,
+      "date": "21.11.24",
+      "connectionAmount": 2
+    },
+    {
+      "id": 3,
+      "from": "TMS",
+      "to": "VDK",
+      "company": "S7",
+      "price": 50,
+      "currency": "RUB",
+      "time": {
+        "startTime": "13:00",
+        "endTime": "15:00"
+      },
+      "duration": 2,
+      "date": "20.11.24",
+      "connectionAmount": 0
+    },
+    {
+      "id": 4,
+      "from": "VKO",
+      "to": "BRL",
+      "company": "S7",
+      "price": 180,
+      "currency": "RUB",
+      "time": {
+        "startTime": "09:00",
+        "endTime": "12:00"
+      },
+      "duration": 4,
+      "date": "22.11.24",
+      "connectionAmount": 3
+    },
+    {
+      "id": 5,
+      "from": "LED",
+      "to": "BCN",
+      "company": "Pobeda",
+      "price": 190,
+      "currency": "RUB",
+      "time": {
+        "startTime": "15:00",
+        "endTime": "19:00"
+      },
+      "duration": 6,
+      "date": "25.11.24",
+      "connectionAmount": 4
+    },
+    {
+      "id": 6,
+      "from": "OMK",
+      "to": "PRG",
+      "company": "Red Wings",
+      "price": 250,
+      "currency": "RUB",
+      "time": {
+        "startTime": "15:00",
+        "endTime": "20:00"
+      },
+      "duration": 5,
+      "date": "25.11.24",
+      "connectionAmount": 5
+    }
+  ]
+}
