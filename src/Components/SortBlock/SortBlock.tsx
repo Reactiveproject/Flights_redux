@@ -1,10 +1,7 @@
 import cl from "./SortBlock.module.scss";
 import SortBlockItem from "../SortBlockItem/SortBlockItem";
-import { useState } from "react";
 
 function SortBlock() {
-  const [active, setActive] = useState("false");
-
   const sortMethodArray = [
     { key: "price", value: "Самый дешевый" },
     { key: "duration", value: "Самый быстрый" },
@@ -13,9 +10,11 @@ function SortBlock() {
 
   return (
     <div className={cl.sortBlock}>
-      <SortBlockItem type={"price"} title={"Самый дешевый"} />
-      <SortBlockItem type={"duration"} title={"Самый быстрый"} />
-      <SortBlockItem type={"connectionAmount"} title={"Самый оптимальный"} />
+      {sortMethodArray.map((item) => {
+        return (
+          <SortBlockItem type={item.key} title={item.value} key={item.key} />
+        );
+      })}
     </div>
   );
 }

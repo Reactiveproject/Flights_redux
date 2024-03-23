@@ -53,13 +53,6 @@ const flightsSlice = createSlice({
     sortByFlights(state, action: PayloadAction<string>) {
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
     },
-
-    // sortByDurationFlights(state) {
-    //   state.flights.sort((a, b) => a.duration - b.duration);
-    // },
-    // sortByConnetctsFlights(state) {
-    //   state.flights.sort((a, b) => a.connectionAmount - b.connectionAmount);
-    // },
   },
   // extraReducers: {
   //   [loadFligtsArray.pending]: (state) => {
@@ -74,10 +67,5 @@ const flightsSlice = createSlice({
   // },
 });
 
-export const {
-  sortByFlights,
-  // sortByDurationFlights,
-  // sortByConnetctsFlights,
-  loadFlights,
-} = flightsSlice.actions;
+export const { sortByFlights, loadFlights } = flightsSlice.actions;
 export default flightsSlice.reducer;
