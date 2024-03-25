@@ -90,5 +90,19 @@
       "date": "25.11.24",
       "connectionAmount": 5
     }
+  ],
+  "compLogo": [
+    {
+      "company": "Pobeda",
+      "logo_link": { "Pobeda_logo" },
+    },
+    {
+      "company": "Red Wings",
+      "logo_link": "RedWings_logo" 
+    },
+    {
+      "company": "S7",
+      "logo_link": "S7_logo"
+    }
   ]
 }

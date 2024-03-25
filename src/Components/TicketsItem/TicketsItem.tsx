@@ -1,7 +1,5 @@
 import cl from "./TicketsItem.module.scss";
 import logo from "../../assets/company_logos/pobeda_logo.svg";
-import { ITicket } from "../../types";
-import { useSelector } from "react-redux";
 
 function TicketsItem({ flight }) {
   // const logosArray = useSelector((state) => state.flights.logos);
