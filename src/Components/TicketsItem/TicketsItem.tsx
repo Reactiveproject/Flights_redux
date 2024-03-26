@@ -1,8 +1,10 @@
 import cl from "./TicketsItem.module.scss";
-import logo from "../../assets/company_logos/pobeda_logo.svg";
+import { ITicket } from "../../Store/FlightsSlice";
+import { useAppSelector } from "../../Hooks/hooks";
+import { connectionArray } from "../FilterBlock";
 
-function TicketsItem({ flight }) {
-  // const logosArray = useSelector((state) => state.flights.logos);
+function TicketsItem({ flight }: ITicket) {
+  const logosArray = useAppSelector((state) => state.flights.logos);
 
   return (
     <div className={cl.tiketsItem}>
@@ -11,7 +13,10 @@ function TicketsItem({ flight }) {
           {flight.price} {flight.currency}
         </div>
         <div className={cl.ticketCompany}>
-          <img src={logo} alt="logo" key={flight.id} />
+          {logosArray.map((logo) => {
+            if (logo.value === flight.company)
+              return <img src={logo.item} alt="logo" key={flight.id} />;
+          })}
         </div>
       </div>
       <div className={cl.flightInfo}>

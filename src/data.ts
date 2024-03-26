@@ -1,7 +1,7 @@
 // import { useState } from "react";
-import Pobeda_logo from "./assets/company_logos/pobeda_logo.svg";
-import S7_logo from "./assets/company_logos/S7_logo.svg";
-import RedWings_logo from "./assets/company_logos/redwings_logo.svg";
+import pobeda_logo from "./assets/company_logos/pobeda_logo.svg";
+import red_logo from "./assets/company_logos/redwings_logo.svg";
+import s7_logo from "./assets/company_logos/S7_logo.svg";
 
 const ticketsdata = [
   {
@@ -96,19 +96,10 @@ const ticketsdata = [
   },
 ];
 
-const compLogo = [
-  {
-    company: "Победа",
-    logo_link: { Pobeda_logo },
-  },
-  {
-    company: "Red Wings",
-    logo_link: { RedWings_logo },
-  },
-  {
-    company: "S7",
-    logo_link: { S7_logo },
-  },
+const logoArray = [
+  { item: pobeda_logo, value: "pobeda" },
+  { item: red_logo, value: "redwings" },
+  { item: s7_logo, value: "s7" },
 ];
 
 ///////// логика эмулятора JSON сервера
@@ -141,4 +132,4 @@ const arrayUpdate = () => {
   // }
 };
 
-export { ticketsdata, arrayUpdate, arrayLoading, compLogo };
+export { ticketsdata, arrayUpdate, arrayLoading, logoArray };

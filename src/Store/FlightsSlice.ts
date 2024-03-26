@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ticketsdata } from "../data";
+import { ticketsdata, logoArray } from "../data";
 
-interface ITicket {
+export interface ITicket {
   id: number;
   from: string;
   to: string;
@@ -15,6 +15,11 @@ interface ITicket {
   connectionAmount: number;
 }
 
+interface ILogos {
+  item: string;
+  value: string;
+}
+
 interface TicketTime {
   startTime: string;
   endTime: string;
@@ -22,14 +27,14 @@ interface TicketTime {
 
 type FlightsState = {
   flights: ITicket[];
-  filtredFlights: ITicket[];
+  logos: ILogos[];
   status: string;
   error: string;
 };
 
 const initialState: FlightsState = {
   flights: [],
-  filtredFlights: [],
+  logos: [],
   status: "false",
   error: "",
 };
@@ -52,6 +57,7 @@ const flightsSlice = createSlice(
     reducers: {
       loadFlights(state) {
         state.flights = [...ticketsdata];
+        state.logos = [...logoArray];
       },
       sortByFlights(state, action: PayloadAction<string>) {
         state.flights.sort((a, b) => a[action.payload] - b[action.payload]);

@@ -1,9 +1,7 @@
-// import { useSelector } from "react-redux";
 import FilterItem from "../FilterItem/FilterItem";
 import cl from "./FilterBlock.module.scss";
-import { useAppSelector } from "../../Hooks/hooks";
 
-const connectionArray = [
+export const connectionArray = [
   { name: "Без пересадок", value: 0 },
   { name: "1 пересадка", value: 1 },
   { name: "2 пересадки", value: 2 },
