@@ -45,28 +45,25 @@ const initialState: FlightsState = {
 //   }
 // );
 
-const flightsSlice = createSlice({
-  name: "flights",
-  initialState,
-  reducers: {
-    loadFlights(state) {
-      state.flights = [...ticketsdata];
-    },
-    sortByFlights(state, action: PayloadAction<string>) {
-      state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
-    },
-    filteredByFlights(state, action) {
-      if (!action.payload) {
-        return state.flights;
-      } else {
+const flightsSlice = createSlice(
+  {
+    name: "flights",
+    initialState,
+    reducers: {
+      loadFlights(state) {
+        state.flights = [...ticketsdata];
+      },
+      sortByFlights(state, action: PayloadAction<string>) {
+        state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
+      },
+      filteredByFlights(state, action) {
+        console.log(action.payload);
         state.flights = state.flights.filter((item) => {
-          console.log(action.payload);
           item.connectionAmount === action.payload;
-          console.log(state.flights);
         });
-      }
+      },
     },
-  },
+  }
   // extraReducers: {
   //   [loadFligtsArray.pending]: (state) => {
   //     state.status = "loading";
@@ -78,7 +75,7 @@ const flightsSlice = createSlice({
   //   },
   //   [loadFligtsArray.rejected]: (state, actions) => {},
   // },
-});
+);
 
 export const { sortByFlights, loadFlights, filteredByFlights } =
   flightsSlice.actions;

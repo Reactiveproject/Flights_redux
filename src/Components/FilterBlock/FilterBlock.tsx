@@ -22,12 +22,12 @@ function FilterBlock() {
       <FilterItem
         title={"Количество пересадок"}
         itemArray={connectionArray}
-        type={"checkbox"}
+        inputType={"checkbox"}
       />
       <FilterItem
         title={"Компании"}
         itemArray={companiesArray}
-        type={"radio"}
+        inputType={"radio"}
       />
     </div>
   );

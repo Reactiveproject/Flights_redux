@@ -2,13 +2,13 @@ import cl from "./FilterItem.module.scss";
 import { useAppDispatch } from "../../Hooks/hooks";
 import { filteredByFlights } from "../../Store/FlightsSlice";
 
-function FilterItem({ title, itemArray, type }) {
+function FilterItem({ title, itemArray, inputType }) {
   const dispatch = useAppDispatch();
 
   return (
     <div className={cl.filterItemBlock}>
       <div className={cl.filterTitle}>{title}</div>
-      <div className={cl.filterItemList}>
+      <form className={cl.filterItemList}>
         {itemArray.map((item) => {
           return (
             <div
@@ -19,11 +19,12 @@ function FilterItem({ title, itemArray, type }) {
               }}
             >
               <div className={cl.checkbox}></div>
+              <input className={cl.input} type={inputType} value={item.value} />
               <div className={cl.filterItemTitle}>{item.name}</div>
             </div>
           );
         })}
-      </div>
+      </form>
     </div>
   );
 }

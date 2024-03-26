@@ -8,7 +8,7 @@ const ticketsdata = [
     id: 1,
     from: "SVO",
     to: "BEL",
-    company: "Победа",
+    company: "pobeda",
     price: 100,
     currency: "RUB",
     time: {
@@ -23,7 +23,7 @@ const ticketsdata = [
     id: 2,
     from: "KAZ",
     to: "CDG",
-    company: "Red Wings",
+    company: "redwings",
     price: 200,
     currency: "RUB",
     time: {
@@ -38,7 +38,7 @@ const ticketsdata = [
     id: 3,
     from: "TMS",
     to: "VDK",
-    company: "S7",
+    company: "s7",
     price: 50,
     currency: "RUB",
     time: {
@@ -53,7 +53,7 @@ const ticketsdata = [
     id: 4,
     from: "VKO",
     to: "BRL",
-    company: "S7",
+    company: "s7",
     price: 180,
     currency: "RUB",
     time: {
@@ -68,7 +68,7 @@ const ticketsdata = [
     id: 5,
     from: "LED",
     to: "BCN",
-    company: "Победа",
+    company: "pobeda",
     price: 190,
     currency: "RUB",
     time: {
@@ -83,7 +83,7 @@ const ticketsdata = [
     id: 6,
     from: "OMK",
     to: "PRG",
-    company: "Red Wings",
+    company: "redwings",
     price: 250,
     currency: "RUB",
     time: {

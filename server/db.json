@@ -19,7 +19,7 @@
       "id": 2,
       "from": "KAZ",
       "to": "CDG",
-      "company": "red_wings",
+      "company": "redwings",
       "price": 200,
       "currency": "RUB",
       "time": {
@@ -73,13 +73,13 @@
       },
       "duration": 6,
       "date": "25.11.24",
-      "connectionAmount": 4
+      "connectionAmount": 2
     },
     {
       "id": 6,
       "from": "OMK",
       "to": "PRG",
-      "company": "red_wings",
+      "company": "redwings",
       "price": 250,
       "currency": "RUB",
       "time": {
@@ -88,7 +88,7 @@
       },
       "duration": 5,
       "date": "25.11.24",
-      "connectionAmount": 5
+      "connectionAmount": 1
     }
   ],
   "compLogo": [
@@ -97,7 +97,7 @@
       "logo_link": "Pobeda_logo"
     },
     {
-      "company": "red_wings",
+      "company": "redwings",
       "logo_link": "RedWings_logo"
     },
     {
