@@ -8,7 +8,7 @@ const ticketsdata = [
     id: 1,
     from: "SVO",
     to: "BEL",
-    company: "Pobeda",
+    company: "Победа",
     price: 100,
     currency: "RUB",
     time: {
@@ -68,7 +68,7 @@ const ticketsdata = [
     id: 5,
     from: "LED",
     to: "BCN",
-    company: "Pobeda",
+    company: "Победа",
     price: 190,
     currency: "RUB",
     time: {
@@ -77,7 +77,7 @@ const ticketsdata = [
     },
     duration: 6,
     date: "25.11.24",
-    connectionAmount: 4,
+    connectionAmount: 2,
   },
   {
     id: 6,
@@ -92,13 +92,13 @@ const ticketsdata = [
     },
     duration: 5,
     date: "25.11.24",
-    connectionAmount: 5,
+    connectionAmount: 1,
   },
 ];
 
 const compLogo = [
   {
-    company: "Pobeda",
+    company: "Победа",
     logo_link: { Pobeda_logo },
   },
   {

@@ -1,4 +1,4 @@
-import cl from "./SoertBlockItem.module.scss";
+import cl from "./SortBlockItem.module.scss";
 import { useAppDispatch } from "../../Hooks/hooks";
 import { sortByFlights } from "../../Store/FlightsSlice";
 import { FC } from "react";

@@ -22,12 +22,14 @@ interface TicketTime {
 
 type FlightsState = {
   flights: ITicket[];
+  filtredFlights: ITicket[];
   status: string;
   error: string;
 };
 
 const initialState: FlightsState = {
   flights: [],
+  filtredFlights: [],
   status: "false",
   error: "",
 };
@@ -53,6 +55,17 @@ const flightsSlice = createSlice({
     sortByFlights(state, action: PayloadAction<string>) {
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
     },
+    filteredByFlights(state, action) {
+      if (!action.payload) {
+        return state.flights;
+      } else {
+        state.flights = state.flights.filter((item) => {
+          console.log(action.payload);
+          item.connectionAmount === action.payload;
+          console.log(state.flights);
+        });
+      }
+    },
   },
   // extraReducers: {
   //   [loadFligtsArray.pending]: (state) => {
@@ -67,5 +80,6 @@ const flightsSlice = createSlice({
   // },
 });
 
-export const { sortByFlights, loadFlights } = flightsSlice.actions;
+export const { sortByFlights, loadFlights, filteredByFlights } =
+  flightsSlice.actions;
 export default flightsSlice.reducer;

@@ -4,7 +4,7 @@
       "id": 1,
       "from": "SVO",
       "to": "BEL",
-      "company": "Pobeda",
+      "company": "pobeda",
       "price": 100,
       "currency": "RUB",
       "time": {
@@ -19,7 +19,7 @@
       "id": 2,
       "from": "KAZ",
       "to": "CDG",
-      "company": "Red Wings",
+      "company": "red_wings",
       "price": 200,
       "currency": "RUB",
       "time": {
@@ -34,7 +34,7 @@
       "id": 3,
       "from": "TMS",
       "to": "VDK",
-      "company": "S7",
+      "company": "s7",
       "price": 50,
       "currency": "RUB",
       "time": {
@@ -49,7 +49,7 @@
       "id": 4,
       "from": "VKO",
       "to": "BRL",
-      "company": "S7",
+      "company": "s7",
       "price": 180,
       "currency": "RUB",
       "time": {
@@ -64,7 +64,7 @@
       "id": 5,
       "from": "LED",
       "to": "BCN",
-      "company": "Pobeda",
+      "company": "pobeda",
       "price": 190,
       "currency": "RUB",
       "time": {
@@ -79,7 +79,7 @@
       "id": 6,
       "from": "OMK",
       "to": "PRG",
-      "company": "Red Wings",
+      "company": "red_wings",
       "price": 250,
       "currency": "RUB",
       "time": {
@@ -93,15 +93,15 @@
   ],
   "compLogo": [
     {
-      "company": "Pobeda",
-      "logo_link": { "Pobeda_logo" },
+      "company": "pobeda",
+      "logo_link": "Pobeda_logo"
     },
     {
-      "company": "Red Wings",
-      "logo_link": "RedWings_logo" 
+      "company": "red_wings",
+      "logo_link": "RedWings_logo"
     },
     {
-      "company": "S7",
+      "company": "s7",
       "logo_link": "S7_logo"
     }
   ]

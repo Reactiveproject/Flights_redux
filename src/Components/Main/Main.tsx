@@ -5,7 +5,7 @@ import cl from "./Main.module.scss";
 function Main() {
   return (
     <div className={cl.main}>
-      {/* <FilterBlock /> */}
+      <FilterBlock />
       <TicketsBlock />
     </div>
   );

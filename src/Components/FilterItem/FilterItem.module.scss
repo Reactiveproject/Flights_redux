@@ -2,6 +2,46 @@
 
 .filterItemBlock {
   background-color: $base-bg-color;
-  width: 272px;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  align-items: center;
+  gap: 22px;
+}
+
+.filterTitle {
+  margin-top: 19px;
+  color: $base-color;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.filterItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  margin-bottom: 48px;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.checkbox {
+  align-items: flex-start;
+  border: 1px solid $base-color;
+  width: 21px;
+  height: 21px;
+  border-radius: 4px;
+  &::before {
+  }
+}
+
+.filterItemTitle {
+  color: $base-color-ligth;
+  font-size: 16px;
 }
