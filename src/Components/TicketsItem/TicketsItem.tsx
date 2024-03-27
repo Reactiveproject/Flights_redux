@@ -1,11 +1,18 @@
 import cl from "./TicketsItem.module.scss";
 import { ITicket } from "../../Store/FlightsSlice";
-import { useAppSelector } from "../../Hooks/hooks";
 import { connectionArray } from "../FilterBlock/FilterBlock";
 
-function TicketsItem({ flight }: ITicket) {
-  const logosArray = useAppSelector((state) => state.flights.logos);
+import pobeda_logo from "../../assets/company_logos/pobeda_logo.svg";
+import red_logo from "../../assets/company_logos/redwings_logo.svg";
+import s7_logo from "../../assets/company_logos/S7_logo.svg";
 
+const logoArray = [
+  { item: pobeda_logo, value: "pobeda" },
+  { item: red_logo, value: "redwings" },
+  { item: s7_logo, value: "s7" },
+];
+
+function TicketsItem({ flight }: ITicket) {
   return (
     <div className={cl.tiketsItem}>
       <div className={cl.ticketInfo}>
@@ -13,7 +20,7 @@ function TicketsItem({ flight }: ITicket) {
           {flight.price} {flight.currency}
         </div>
         <div className={cl.ticketCompany}>
-          {logosArray.map((logo) => {
+          {logoArray.map((logo) => {
             if (logo.value === flight.company)
               return <img src={logo.item} alt="logo" key={flight.id} />;
           })}
@@ -36,7 +43,11 @@ function TicketsItem({ flight }: ITicket) {
           <div>Пересадки</div>
           {connectionArray.map((item) => {
             if (item.value === flight.connectionAmount)
-              return <div className={cl.fligthDetails}>{item.name}</div>;
+              return (
+                <div className={cl.fligthDetails} key={item.name}>
+                  {item.name}
+                </div>
+              );
           })}
         </div>
       </div>

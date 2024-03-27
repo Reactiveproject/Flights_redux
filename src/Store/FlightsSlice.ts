@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ticketsdata, logoArray } from "../data";
 
 export interface ITicket {
   id: number;
@@ -30,57 +29,77 @@ type FlightsState = {
   logos: ILogos[];
   status: string;
   error: any;
+  initpos: number;
 };
 
 const initialState: FlightsState = {
   flights: [],
   logos: [],
-  status: "false",
+  status: "",
   error: null,
+  initpos: 0,
 };
 
-const urlAPI = "http://localhost:3001/fligths";
+// const urlAPI = `http://localhost:3001/fligths?_start=0&_limit=3`;
 
 export const loadFligtsArray = createAsyncThunk(
   "flights/loadFligtsArray",
-  async function () {
-    const response = await fetch(urlAPI);
-    const data = await response.json();
-    return data;
+  async function (_, { rejectWithValue }) {
+    try {
+      const response = await fetch(
+        `http://localhost:3001/fligths?_start=0&_limit=3`
+      );
+
+      if (!response.ok) {
+        throw new Error("Server Error");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
 const flightsSlice = createSlice({
   name: "flights",
   initialState,
-  reducers: {
-    loadFlights(state) {
-      state.flights = [...ticketsdata];
-      state.logos = [...logoArray];
-    },
-    sortByFlights(state, action: PayloadAction<string>) {
+  reducers: (create) => ({
+    sortByFlights: create.reducer((state, action: PayloadAction<string>) => {
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
-    },
-    filteredByFlights(state, action) {
+    }),
+    filteredByFlights: create.reducer((state, action) => {
       console.log(action.payload);
       state.flights = state.flights.filter((item) => {
-        item.connectionAmount === action.payload;
+        item.connectionAmount == action.payload;
       });
-    },
-  },
-  extraReducers: {
-    [loadFligtsArray.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [loadFligtsArray.fulfilled]: (state, action) => {
-      state.status = "resolved";
-      state.flights = action.payload;
-    },
-    [loadFligtsArray.rejected]: (state, actions) => {},
+    }),
+    changeInitPosition: create.reducer((state, action) => {
+      state.initpos += action.payload;
+      console.log(state.initpos);
+    }),
+  }),
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadFligtsArray.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(loadFligtsArray.fulfilled, (state, action) => {
+        state.status = "resolved";
+        state.flights = action.payload;
+      })
+      .addCase(loadFligtsArray.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload;
+      });
   },
 });
 
-export const { sortByFlights, loadFlights, filteredByFlights } =
-  flightsSlice.actions;
+export const {
+  sortByFlights,
+  loadFlights,
+  filteredByFlights,
+  changeInitPosition,
+} = flightsSlice.actions;
 export default flightsSlice.reducer;
