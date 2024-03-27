@@ -10,7 +10,7 @@ const ticketsdata = [
     to: "BEL",
     company: "pobeda",
     price: 100,
-    currency: "RUB",
+    currency: "Р",
     time: {
       startTime: "11:00",
       endTime: "14:00",
@@ -25,7 +25,7 @@ const ticketsdata = [
     to: "CDG",
     company: "redwings",
     price: 200,
-    currency: "RUB",
+    currency: "Р",
     time: {
       startTime: "11:00",
       endTime: "15:00",
@@ -40,7 +40,7 @@ const ticketsdata = [
     to: "VDK",
     company: "s7",
     price: 50,
-    currency: "RUB",
+    currency: "Р",
     time: {
       startTime: "13:00",
       endTime: "15:00",
@@ -55,7 +55,7 @@ const ticketsdata = [
     to: "BRL",
     company: "s7",
     price: 180,
-    currency: "RUB",
+    currency: "Р",
     time: {
       startTime: "09:00",
       endTime: "12:00",
@@ -70,7 +70,7 @@ const ticketsdata = [
     to: "BCN",
     company: "pobeda",
     price: 190,
-    currency: "RUB",
+    currency: "Р",
     time: {
       startTime: "15:00",
       endTime: "19:00",
@@ -85,7 +85,7 @@ const ticketsdata = [
     to: "PRG",
     company: "redwings",
     price: 250,
-    currency: "RUB",
+    currency: "Р",
     time: {
       startTime: "15:00",
       endTime: "20:00",

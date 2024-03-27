@@ -19,6 +19,10 @@
     background-color: $base-color;
     color: white;
   }
+
+  @media screen and (max-width: $mobile) {
+    font-size: 12px;
+  }
 }
 
 .active {

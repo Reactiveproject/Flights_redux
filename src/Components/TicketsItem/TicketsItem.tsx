@@ -1,7 +1,7 @@
 import cl from "./TicketsItem.module.scss";
 import { ITicket } from "../../Store/FlightsSlice";
 import { useAppSelector } from "../../Hooks/hooks";
-import { connectionArray } from "../FilterBlock";
+import { connectionArray } from "../FilterBlock/FilterBlock";
 
 function TicketsItem({ flight }: ITicket) {
   const logosArray = useAppSelector((state) => state.flights.logos);
@@ -34,10 +34,10 @@ function TicketsItem({ flight }: ITicket) {
         </div>
         <div className={cl.fligthDetails}>
           <div>Пересадки</div>
-          {!flight.connectionAmount && <div>Без пересадок</div>}
-          {flight.connectionAmount && (
-            <div>{flight.connectionAmount} пересадка</div>
-          )}
+          {connectionArray.map((item) => {
+            if (item.value === flight.connectionAmount)
+              return <div className={cl.fligthDetails}>{item.name}</div>;
+          })}
         </div>
       </div>
     </div>

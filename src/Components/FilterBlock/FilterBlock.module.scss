@@ -1,6 +1,11 @@
+@import "../../App.scss";
+
 .filterBlock {
   width: 272px;
   display: flex;
   flex-direction: column;
   gap: 47px;
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
 }
