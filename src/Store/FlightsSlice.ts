@@ -29,59 +29,57 @@ type FlightsState = {
   flights: ITicket[];
   logos: ILogos[];
   status: string;
-  error: string;
+  error: any;
 };
 
 const initialState: FlightsState = {
   flights: [],
   logos: [],
   status: "false",
-  error: "",
+  error: null,
 };
 
-// const urlAPI = "http://localhost:3000/fligths";
+const urlAPI = "http://localhost:3001/fligths";
 
-// const loadFligtsArray = createAsyncThunk(
-//   "flights/loadFligtsArray",
-//   async function () {
-//     const response = await fetch(urlAPI);
-//     const data = await response.json();
-//     return data;
-//   }
-// );
-
-const flightsSlice = createSlice(
-  {
-    name: "flights",
-    initialState,
-    reducers: {
-      loadFlights(state) {
-        state.flights = [...ticketsdata];
-        state.logos = [...logoArray];
-      },
-      sortByFlights(state, action: PayloadAction<string>) {
-        state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
-      },
-      filteredByFlights(state, action) {
-        console.log(action.payload);
-        state.flights = state.flights.filter((item) => {
-          item.connectionAmount === action.payload;
-        });
-      },
-    },
+export const loadFligtsArray = createAsyncThunk(
+  "flights/loadFligtsArray",
+  async function () {
+    const response = await fetch(urlAPI);
+    const data = await response.json();
+    return data;
   }
-  // extraReducers: {
-  //   [loadFligtsArray.pending]: (state) => {
-  //     state.status = "loading";
-  //     state.error = null;
-  //   },
-  //   [loadFligtsArray.fulfilled]: (state, actions) => {
-  //     state.status = "resolved";
-  //     state.flights = actions.payload;
-  //   },
-  //   [loadFligtsArray.rejected]: (state, actions) => {},
-  // },
 );
+
+const flightsSlice = createSlice({
+  name: "flights",
+  initialState,
+  reducers: {
+    loadFlights(state) {
+      state.flights = [...ticketsdata];
+      state.logos = [...logoArray];
+    },
+    sortByFlights(state, action: PayloadAction<string>) {
+      state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
+    },
+    filteredByFlights(state, action) {
+      console.log(action.payload);
+      state.flights = state.flights.filter((item) => {
+        item.connectionAmount === action.payload;
+      });
+    },
+  },
+  extraReducers: {
+    [loadFligtsArray.pending]: (state) => {
+      state.status = "loading";
+      state.error = null;
+    },
+    [loadFligtsArray.fulfilled]: (state, action) => {
+      state.status = "resolved";
+      state.flights = action.payload;
+    },
+    [loadFligtsArray.rejected]: (state, actions) => {},
+  },
+});
 
 export const { sortByFlights, loadFlights, filteredByFlights } =
   flightsSlice.actions;
