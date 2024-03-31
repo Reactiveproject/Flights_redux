@@ -1,0 +1,66 @@
+@import "../../App.scss";
+
+.mobileFilterBlock {
+  display: none;
+  flex-direction: column;
+  background-color: $base-color;
+  color: white;
+  width: 100%;
+  border-radius: 10px;
+  @media screen and (max-width: $tablet) {
+    display: flex;
+  }
+}
+
+.titleBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 23px 0;
+}
+
+.optionTitle {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.36px;
+  margin: 0;
+  @media screen and (max-width: $mobile) {
+    font-size: 12px;
+  }
+  & p:first-child {
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
+  }
+  & p:last-child {
+    @media screen and (min-width: $mobile) {
+      display: none;
+    }
+  }
+}
+
+.optionTabTitle {
+  font-size: 12px;
+  line-height: 14.52px;
+  margin: 0;
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
+}
+.optionTab {
+  display: flex;
+  gap: 15px;
+}
+
+.optionTabIco {
+}
+
+.filterBlock {
+  display: flex;
+  flex-direction: row;
+  margin-left: 24px;
+  gap: 66px;
+  @media screen and (max-width: $mobile) {
+    gap: 45px;
+  }
+}

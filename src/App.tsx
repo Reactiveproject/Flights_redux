@@ -8,13 +8,6 @@ import { loadFligtsArray } from "./Store/FlightsSlice";
 // import { ITicket } from "./types";
 
 function App() {
-  // const loadDataArray = () => {};
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadFligtsArray());
-  }, [dispatch]);
-
   return (
     <div className="container">
       <Header />

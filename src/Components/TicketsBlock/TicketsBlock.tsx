@@ -3,6 +3,7 @@ import cl from "./TicketsBlock.module.scss";
 import SortBlock from "../SortBlock/SortBlock";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { changeInitPosition } from "../../Store/FlightsSlice";
+import MobileFilterBlock from "../MobileFilterBlock/MobileFilterBlock";
 
 function TicketsBlock() {
   const { flights, error, status } = useAppSelector((state) => state.flights);
@@ -12,6 +13,7 @@ function TicketsBlock() {
   return (
     <div className={cl.ticketsBlock}>
       <SortBlock />
+      <MobileFilterBlock />
       {status === "loading" && <h2>Загрузка...</h2>}
       {error && <h2>Ошибка загрузки: {error}</h2>}
       {flights.map((flight) => {

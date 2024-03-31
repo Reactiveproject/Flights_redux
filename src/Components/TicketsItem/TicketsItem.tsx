@@ -1,6 +1,6 @@
 import cl from "./TicketsItem.module.scss";
 import { ITicket } from "../../Store/FlightsSlice";
-import { connectionArray } from "../FilterBlock/FilterBlock";
+import { connectionArray } from "../Main/Main";
 
 import pobeda_logo from "../../assets/company_logos/pobeda_logo.svg";
 import red_logo from "../../assets/company_logos/redwings_logo.svg";
