@@ -96,10 +96,6 @@ const flightsSlice = createSlice({
   },
 });
 
-export const {
-  sortByFlights,
-  loadFlights,
-  filteredByFlights,
-  changeInitPosition,
-} = flightsSlice.actions;
+export const { sortByFlights, filteredByFlights, changeInitPosition } =
+  flightsSlice.actions;
 export default flightsSlice.reducer;

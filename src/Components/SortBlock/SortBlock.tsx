@@ -1,5 +1,6 @@
+import { useState } from "react";
+import { useToggle } from "../../Hooks/hooks";
 import cl from "./SortBlock.module.scss";
-import SortBlockItem from "../SortBlockItem/SortBlockItem";
 
 function SortBlock() {
   const sortMethodArray = [
@@ -8,11 +9,25 @@ function SortBlock() {
     { key: "connectionAmount", value: "Самый оптимальный" },
   ];
 
+  const [active, setActive] = useState(0);
+
+  const setButtonActive = (index) => {
+    setActive(index);
+  };
+
   return (
     <div className={cl.sortBlock}>
-      {sortMethodArray.map((item) => {
+      {sortMethodArray.map((item, index) => {
         return (
-          <SortBlockItem type={item.key} title={item.value} key={item.key} />
+          <div
+            className={
+              active === index ? cl.sortButton + " " + cl.active : cl.sortButton
+            }
+            key={item.value}
+            onClick={() => setButtonActive(index)}
+          >
+            {item.value}
+          </div>
         );
       })}
     </div>

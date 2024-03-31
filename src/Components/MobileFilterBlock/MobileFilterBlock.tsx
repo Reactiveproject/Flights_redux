@@ -5,7 +5,7 @@ import openTabIco from "../../assets/opentabIco.svg";
 import { useState } from "react";
 
 function MobileFilterBlock() {
-  const [visible, setVisible] = useState("false");
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className={cl.mobileFilterBlock}>
@@ -18,7 +18,7 @@ function MobileFilterBlock() {
           <p className={cl.optionTabTitle}>Открыть настройки</p>
           <img
             src={openTabIco}
-            className={visible && cl.optionTabIco}
+            className={visible ? cl.optionTabIco : undefined}
             alt="openTabIco"
             onClick={() => {
               setVisible(!visible);

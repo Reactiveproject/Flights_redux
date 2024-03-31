@@ -12,14 +12,10 @@
   font-weight: 700;
   flex-grow: 1;
   text-align: center;
-  &:hover {
-    background-color: $base-color-ligth;
-    color: white;
-  }
-  &:active {
-    background-color: $base-color;
-    color: white;
-  }
+  // &:hover {
+  //   background-color: $base-color-ligth;
+  //   color: white;
+  // }
 
   @media screen and (max-width: $mobile) {
     font-size: 12px;
