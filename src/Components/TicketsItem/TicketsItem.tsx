@@ -17,7 +17,7 @@ function TicketsItem({ flight }: ITicket) {
     <div className={cl.tiketsItem}>
       <div className={cl.ticketInfo}>
         <div className={cl.ticketPrice}>
-          {flight.price} {flight.currency}
+          {flight.price.toLocaleString("ru-RU")} {flight.currency}
         </div>
         <div className={cl.ticketCompany}>
           {logoArray.map((logo) => {

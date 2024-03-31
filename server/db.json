@@ -5,7 +5,7 @@
       "from": "SVO",
       "to": "BEL",
       "company": "pobeda",
-      "price": 100,
+      "price": 10000,
       "currency": "P",
       "time": {
         "startTime": "11:00",
@@ -20,7 +20,7 @@
       "from": "KAZ",
       "to": "CDG",
       "company": "redwings",
-      "price": 200,
+      "price": 20000,
       "currency": "P",
       "time": {
         "startTime": "11:00",
@@ -35,7 +35,7 @@
       "from": "TMS",
       "to": "VDK",
       "company": "s7",
-      "price": 50,
+      "price": 5000,
       "currency": "P",
       "time": {
         "startTime": "13:00",
@@ -50,7 +50,7 @@
       "from": "VKO",
       "to": "BRL",
       "company": "s7",
-      "price": 180,
+      "price": 18000,
       "currency": "P",
       "time": {
         "startTime": "09:00",
@@ -65,7 +65,7 @@
       "from": "LED",
       "to": "BCN",
       "company": "pobeda",
-      "price": 190,
+      "price": 19000,
       "currency": "P",
       "time": {
         "startTime": "15:00",
@@ -80,7 +80,7 @@
       "from": "OMK",
       "to": "PRG",
       "company": "redwings",
-      "price": 250,
+      "price": 25000,
       "currency": "P",
       "time": {
         "startTime": "15:00",
@@ -89,6 +89,66 @@
       "duration": 5,
       "date": "25.11.24",
       "connectionAmount": 1
+    },
+    {
+      "id": 7,
+      "from": "LED",
+      "to": "PRG",
+      "company": "s7",
+      "price": 23000,
+      "currency": "P",
+      "time": {
+        "startTime": "16:00",
+        "endTime": "20:00"
+      },
+      "duration": 4,
+      "date": "25.11.24",
+      "connectionAmount": 2
+    },
+    {
+      "id": 7,
+      "from": "VKO",
+      "to": "CDG",
+      "company": "redwings",
+      "price": 25000,
+      "currency": "P",
+      "time": {
+        "startTime": "11:00",
+        "endTime": "19:00"
+      },
+      "duration": 8,
+      "date": "25.11.24",
+      "connectionAmount": 3
+    },
+    {
+      "id": 8,
+      "from": "BIO",
+      "to": "SVO",
+      "company": "pobeda",
+      "price": 30000,
+      "currency": "P",
+      "time": {
+        "startTime": "06:00",
+        "endTime": "11:00"
+      },
+      "duration": 5,
+      "date": "25.11.24",
+      "connectionAmount": 2
+    },
+    {
+      "id": 9,
+      "from": "KGD",
+      "to": "SVO",
+      "company": "redwings",
+      "price": 9000,
+      "currency": "P",
+      "time": {
+        "startTime": "00:00",
+        "endTime": "01:00"
+      },
+      "duration": 1,
+      "date": "25.11.24",
+      "connectionAmount": 0
     }
   ]
 }
