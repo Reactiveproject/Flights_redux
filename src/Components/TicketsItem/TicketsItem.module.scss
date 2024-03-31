@@ -45,3 +45,10 @@
   color: rgba(133, 138, 227, 1);
   margin-bottom: 9px;
 }
+
+.logoCompany {
+  width: 180px;
+  @media screen and (max-width: $mobile) {
+    width: 120px;
+  }
+}

@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { useToggle } from "../../Hooks/hooks";
+import { useAppDispatch } from "../../Hooks/hooks";
 import cl from "./SortBlock.module.scss";
+import { sortByFlights } from "../../Store/FlightsSlice";
+
+// type TSortProps = {
+//   type: string;
+//   title: string;
+//   key?: string;
+// };
 
 function SortBlock() {
+  const dispatch = useAppDispatch();
+
   const sortMethodArray = [
     { key: "price", value: "Самый дешевый" },
     { key: "duration", value: "Самый быстрый" },
@@ -11,7 +20,8 @@ function SortBlock() {
 
   const [active, setActive] = useState(0);
 
-  const setButtonActive = (index) => {
+  const setSelectSort = (index, item) => {
+    dispatch(sortByFlights(item.key));
     setActive(index);
   };
 
@@ -24,7 +34,7 @@ function SortBlock() {
               active === index ? cl.sortButton + " " + cl.active : cl.sortButton
             }
             key={item.value}
-            onClick={() => setButtonActive(index)}
+            onClick={() => setSelectSort(index, item)}
           >
             {item.value}
           </div>

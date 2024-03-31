@@ -19,12 +19,17 @@ function TicketsItem({ flight }: ITicket) {
         <div className={cl.ticketPrice}>
           {flight.price.toLocaleString("ru-RU")} {flight.currency}
         </div>
-        <div className={cl.ticketCompany}>
-          {logoArray.map((logo) => {
-            if (logo.value === flight.company)
-              return <img src={logo.item} alt="logo" key={flight.id} />;
-          })}
-        </div>
+        {logoArray.map((logo) => {
+          if (logo.value === flight.company)
+            return (
+              <img
+                src={logo.item}
+                className={cl.logoCompany}
+                alt="logo"
+                key={flight.id}
+              />
+            );
+        })}
       </div>
       <div className={cl.flightInfo}>
         <div className={cl.fligthDetails}>

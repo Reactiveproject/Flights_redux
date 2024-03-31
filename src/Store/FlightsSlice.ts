@@ -67,6 +67,8 @@ const flightsSlice = createSlice({
   initialState,
   reducers: (create) => ({
     sortByFlights: create.reducer((state, action: PayloadAction<string>) => {
+      console.log(action.payload);
+
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
     }),
     filteredByFlights: create.reducer((state, action) => {
