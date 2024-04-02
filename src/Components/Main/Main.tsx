@@ -15,7 +15,7 @@ export const connectionArray = [
 export const companiesArray = [
   { name: "Победа", value: "pobeda" },
   { name: "Red Wins", value: "redwings" },
-  { name: "S7", value: "s7" },
+  { name: "S7 Airlines", value: "s7" },
 ];
 
 function Main() {

@@ -106,7 +106,7 @@
       "connectionAmount": 2
     },
     {
-      "id": 7,
+      "id": 8,
       "from": "VKO",
       "to": "CDG",
       "company": "redwings",
@@ -121,7 +121,7 @@
       "connectionAmount": 3
     },
     {
-      "id": 8,
+      "id": 9,
       "from": "BIO",
       "to": "SVO",
       "company": "pobeda",
@@ -136,7 +136,7 @@
       "connectionAmount": 2
     },
     {
-      "id": 9,
+      "id": 10,
       "from": "KGD",
       "to": "SVO",
       "company": "redwings",

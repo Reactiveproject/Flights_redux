@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { PayloadAction } from "@reduxjs/toolkit";
+// import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface ITicket {
   id: number;
@@ -26,6 +26,7 @@ interface TicketTime {
 
 type FlightsState = {
   flights: ITicket[];
+  flightsConteiner?: ITicket[];
   logos: ILogos[];
   status: string;
   error: any;
@@ -34,21 +35,20 @@ type FlightsState = {
 
 const initialState: FlightsState = {
   flights: [],
+  flightsConteiner: [],
   logos: [],
   status: "",
   error: null,
   initpos: 0,
 };
 
-// const urlAPI = `http://localhost:3001/fligths?_start=0&_limit=3`;
+// const urlAPI = `http://localhost:3001/fligths?_start=3&_limit=3`;
 
 export const loadFligtsArray = createAsyncThunk(
   "flights/loadFligtsArray",
   async function (_, { rejectWithValue }) {
     try {
-      const response = await fetch(
-        `http://localhost:3001/fligths?_start=0&_limit=3`
-      );
+      const response = await fetch(`http://localhost:3001/fligths`);
 
       if (!response.ok) {
         throw new Error("Server Error");
@@ -65,23 +65,27 @@ export const loadFligtsArray = createAsyncThunk(
 const flightsSlice = createSlice({
   name: "flights",
   initialState,
-  reducers: (create) => ({
-    sortByFlights: create.reducer((state, action: PayloadAction<string>) => {
-      console.log(action.payload);
-
+  reducers: {
+    sortByFlights(state, action) {
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
-    }),
-    filteredByFlights: create.reducer((state, action) => {
+    },
+    filtredByCompany(state, action) {
       console.log(action.payload);
-      state.flights = state.flights.filter((item) => {
-        item.connectionAmount == action.payload;
-      });
-    }),
-    changeInitPosition: create.reducer((state, action) => {
-      state.initpos += action.payload;
-      console.log(state.initpos);
-    }),
-  }),
+      state.flights = state.flightsConteiner.filter(
+        (item) => item.company === action.payload
+      );
+    },
+    filtredByConnections(state, action) {
+      console.log(action.payload);
+      state.flights = state.flightsConteiner.filter(
+        (item) => item.company === action.payload
+      );
+    },
+    // changeInitPosition: create.reducer((state, action) => {
+    //   state.initpos += action.payload;
+    //   console.log(state.initpos);
+    // }),
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadFligtsArray.pending, (state) => {
@@ -90,6 +94,7 @@ const flightsSlice = createSlice({
       .addCase(loadFligtsArray.fulfilled, (state, action) => {
         state.status = "resolved";
         state.flights = action.payload;
+        state.flightsConteiner = action.payload;
       })
       .addCase(loadFligtsArray.rejected, (state, action) => {
         state.status = "rejected";
@@ -98,6 +103,6 @@ const flightsSlice = createSlice({
   },
 });
 
-export const { sortByFlights, filteredByFlights, changeInitPosition } =
+export const { sortByFlights, filtredByCompany, filtredByConnections } =
   flightsSlice.actions;
 export default flightsSlice.reducer;

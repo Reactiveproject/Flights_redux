@@ -13,7 +13,7 @@ function FilterBlock() {
       <FilterItem
         title={"Компании"}
         itemArray={companiesArray}
-        inputType={"radio"}
+        inputType={"checkbox"}
       />
     </div>
   );

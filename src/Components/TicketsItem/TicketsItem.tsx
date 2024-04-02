@@ -1,5 +1,4 @@
 import cl from "./TicketsItem.module.scss";
-import { ITicket } from "../../Store/FlightsSlice";
 import { connectionArray } from "../Main/Main";
 
 import pobeda_logo from "../../assets/company_logos/pobeda_logo.svg";
@@ -12,7 +11,7 @@ const logoArray = [
   { item: s7_logo, value: "s7" },
 ];
 
-function TicketsItem({ flight }: ITicket) {
+function TicketsItem({ flight }) {
   return (
     <div className={cl.tiketsItem}>
       <div className={cl.ticketInfo}>

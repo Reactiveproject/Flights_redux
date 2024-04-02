@@ -1,9 +1,27 @@
 import cl from "./FilterItem.module.scss";
 import { useAppDispatch } from "../../Hooks/hooks";
-import { filteredByFlights } from "../../Store/FlightsSlice";
+import {
+  filtredByCompany,
+  filtredByConnections,
+} from "../../Store/FlightsSlice";
 
-function FilterItem({ title, itemArray, inputType }) {
+function FilterItem({
+  title,
+  itemArray,
+  inputType,
+}: {
+  title: string;
+  itemArray: {
+    name: string;
+    value: any;
+  }[];
+  inputType: string;
+}) {
   const dispatch = useAppDispatch();
+
+  // const setSelectFilter = (item) => {
+  //   dispatch(filteredByFlights(item.value));
+  // };
 
   return (
     <div className={cl.filterItemBlock}>
@@ -11,17 +29,15 @@ function FilterItem({ title, itemArray, inputType }) {
       <form className={cl.filterItemList}>
         {itemArray.map((item) => {
           return (
-            <div
+            <label
               className={cl.filterItem}
               key={item.name}
-              onClick={() => {
-                dispatch(filteredByFlights(item.value));
-              }}
+              onClick={() => dispatch(filtredByCompany(item.value))}
             >
-              <div className={cl.checkbox}></div>
               <input className={cl.input} type={inputType} value={item.value} />
+              <div className={cl.checkbox}></div>
               <div className={cl.filterItemTitle}>{item.name}</div>
-            </div>
+            </label>
           );
         })}
       </form>
