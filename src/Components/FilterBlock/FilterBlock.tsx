@@ -8,12 +8,12 @@ function FilterBlock() {
       <FilterItem
         title={"Количество пересадок"}
         itemArray={connectionArray}
-        inputType={"checkbox"}
+        type={"connection"}
       />
       <FilterItem
         title={"Компании"}
         itemArray={companiesArray}
-        inputType={"checkbox"}
+        type={"company"}
       />
     </div>
   );

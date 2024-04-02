@@ -8,14 +8,14 @@ import {
 function FilterItem({
   title,
   itemArray,
-  inputType,
+  type,
 }: {
   title: string;
   itemArray: {
     name: string;
     value: any;
   }[];
-  inputType: string;
+  type: string;
 }) {
   const dispatch = useAppDispatch();
 
@@ -32,9 +32,13 @@ function FilterItem({
             <label
               className={cl.filterItem}
               key={item.name}
-              onClick={() => dispatch(filtredByCompany(item.value))}
+              onClick={() => {
+                type === "company"
+                  ? dispatch(filtredByCompany(item.value))
+                  : dispatch(filtredByConnections(item.value));
+              }}
             >
-              <input className={cl.input} type={inputType} value={item.value} />
+              <input className={cl.input} type="checkbox" value={item.value} />
               <div className={cl.checkbox}></div>
               <div className={cl.filterItemTitle}>{item.name}</div>
             </label>

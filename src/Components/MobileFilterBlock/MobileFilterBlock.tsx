@@ -31,12 +31,12 @@ function MobileFilterBlock() {
           <FilterItem
             title={"Компании"}
             itemArray={companiesArray}
-            inputType={"radio"}
+            type={"company"}
           />
           <FilterItem
             title={"Количество пересадок"}
             itemArray={connectionArray}
-            inputType={"checkbox"}
+            type={"connection"}
           />
         </div>
       )}

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface ITicket {
   id: number;
@@ -26,7 +26,7 @@ interface TicketTime {
 
 type FlightsState = {
   flights: ITicket[];
-  flightsConteiner?: ITicket[];
+  flightsConteiner: ITicket[];
   logos: ILogos[];
   status: string;
   error: any;
@@ -38,7 +38,7 @@ const initialState: FlightsState = {
   flightsConteiner: [],
   logos: [],
   status: "",
-  error: null,
+  error: "",
   initpos: 0,
 };
 
@@ -66,19 +66,19 @@ const flightsSlice = createSlice({
   name: "flights",
   initialState,
   reducers: {
-    sortByFlights(state, action) {
+    sortByFlights(state, action: PayloadAction<number>) {
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
     },
-    filtredByCompany(state, action) {
+    filtredByCompany(state, action: PayloadAction<string>) {
       console.log(action.payload);
       state.flights = state.flightsConteiner.filter(
         (item) => item.company === action.payload
       );
     },
-    filtredByConnections(state, action) {
+    filtredByConnections(state, action: PayloadAction<number>) {
       console.log(action.payload);
       state.flights = state.flightsConteiner.filter(
-        (item) => item.company === action.payload
+        (item) => item.connectionAmount === action.payload
       );
     },
     // changeInitPosition: create.reducer((state, action) => {
