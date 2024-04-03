@@ -9,19 +9,16 @@ function FilterItem({
   title,
   itemArray,
   type,
-}: {
-  title: string;
-  itemArray: {
-    name: string;
-    value: any;
-  }[];
-  type: string;
+  // }: {
+  //   title: string;
+  //   itemArray: {
+  //     name: string;
+  //     value: string | number;
+  //     filtredBy: boolean;
+  //   }[];
+  //   type: string;
 }) {
   const dispatch = useAppDispatch();
-
-  // const setSelectFilter = (item) => {
-  //   dispatch(filteredByFlights(item.value));
-  // };
 
   return (
     <div className={cl.filterItemBlock}>
@@ -38,8 +35,20 @@ function FilterItem({
                   : dispatch(filtredByConnections(item.value));
               }}
             >
-              <input className={cl.input} type="checkbox" value={item.value} />
-              <div className={cl.checkbox}></div>
+              <input
+                className={cl.input}
+                type={type === "company" ? "radio" : "checkbox"}
+                value={item.value}
+              />
+              <div
+                className={
+                  type === "company"
+                    ? item.filtredBy
+                      ? cl.radio + " " + cl.activeRadio
+                      : cl.radio
+                    : cl.checkbox
+                }
+              ></div>
               <div className={cl.filterItemTitle}>{item.name}</div>
             </label>
           );

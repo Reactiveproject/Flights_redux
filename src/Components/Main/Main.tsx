@@ -6,16 +6,16 @@ import { useAppDispatch } from "../../Hooks/hooks";
 import { loadFligtsArray } from "../../Store/FlightsSlice";
 
 export const connectionArray = [
-  { name: "Без пересадок", value: 0 },
-  { name: "1 пересадка", value: 1 },
-  { name: "2 пересадки", value: 2 },
-  { name: "3 пересадки", value: 3 },
+  { name: "Без пересадок", value: 0, filtredBy: false },
+  { name: "1 пересадка", value: 1, filtredBy: false },
+  { name: "2 пересадки", value: 2, filtredBy: false },
+  { name: "3 пересадки", value: 3, filtredBy: false },
 ];
 
 export const companiesArray = [
-  { name: "Победа", value: "pobeda" },
-  { name: "Red Wins", value: "redwings" },
-  { name: "S7 Airlines", value: "s7" },
+  { name: "Победа", value: "pobeda", filtredBy: false },
+  { name: "Red Wins", value: "redwings", filtredBy: false },
+  { name: "S7 Airlines", value: "s7", filtredBy: false },
 ];
 
 function Main() {

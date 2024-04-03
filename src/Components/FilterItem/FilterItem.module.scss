@@ -83,7 +83,7 @@
   }
 }
 
-.radiobox {
+.radio {
   position: absolute;
   width: 21px;
   height: 21px;
@@ -95,6 +95,16 @@
   @media screen and (max-width: $tablet) {
     border: 1px solid white;
     margin-left: -30px;
+  }
+}
+
+.activeRadio {
+  position: absolute;
+  background-image: url(../../assets/radiochecked_ico.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  @media screen and (max-width: $tablet) {
+    background-image: url(../../assets/radiochecked_ico_mob.png);
   }
 }
 

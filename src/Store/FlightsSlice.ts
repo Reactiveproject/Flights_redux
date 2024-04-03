@@ -14,9 +14,16 @@ export interface ITicket {
   connectionAmount: number;
 }
 
-interface ILogos {
-  item: string;
+interface IConnectArrayItem {
+  name: string;
+  value: number;
+  filtredBy: boolean;
+}
+
+interface ICompanyArrayItem {
+  name: string;
   value: string;
+  filtredBy: boolean;
 }
 
 interface TicketTime {
@@ -27,7 +34,8 @@ interface TicketTime {
 type FlightsState = {
   flights: ITicket[];
   flightsConteiner: ITicket[];
-  logos: ILogos[];
+  connectionArray: IConnectArrayItem[];
+  companiesArray: ICompanyArrayItem[];
   status: string;
   error: any;
   initpos: number;
@@ -36,12 +44,22 @@ type FlightsState = {
 const initialState: FlightsState = {
   flights: [],
   flightsConteiner: [],
-  logos: [],
+  connectionArray: [
+    { name: "Без пересадок", value: 0, filtredBy: false },
+    { name: "1 пересадка", value: 1, filtredBy: false },
+    { name: "2 пересадки", value: 2, filtredBy: false },
+    { name: "3 пересадки", value: 3, filtredBy: false },
+  ],
+  companiesArray: [
+    { name: "Победа", value: "pobeda", filtredBy: false },
+    { name: "Red Wins", value: "redwings", filtredBy: false },
+    { name: "S7 Airlines", value: "s7", filtredBy: false },
+  ],
+
   status: "",
   error: "",
   initpos: 0,
 };
-
 // const urlAPI = `http://localhost:3001/fligths?_start=3&_limit=3`;
 
 export const loadFligtsArray = createAsyncThunk(
@@ -66,25 +84,25 @@ const flightsSlice = createSlice({
   name: "flights",
   initialState,
   reducers: {
-    sortByFlights(state, action: PayloadAction<number>) {
+    sortByFlights(state: FlightsState, action: PayloadAction<number>) {
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
     },
-    filtredByCompany(state, action: PayloadAction<string>) {
-      console.log(action.payload);
+    filtredByCompany(state: FlightsState, action: PayloadAction<string>) {
       state.flights = state.flightsConteiner.filter(
         (item) => item.company === action.payload
       );
+      state.companiesArray.map((item) => {
+        action.payload === item.value
+          ? (item.filtredBy = true)
+          : (item.filtredBy = false);
+      });
     },
-    filtredByConnections(state, action: PayloadAction<number>) {
+    filtredByConnections(state: FlightsState, action: PayloadAction<number>) {
       console.log(action.payload);
       state.flights = state.flightsConteiner.filter(
-        (item) => item.connectionAmount === action.payload
+        (item: ITicket) => item.connectionAmount === action.payload
       );
     },
-    // changeInitPosition: create.reducer((state, action) => {
-    //   state.initpos += action.payload;
-    //   console.log(state.initpos);
-    // }),
   },
   extraReducers: (builder) => {
     builder

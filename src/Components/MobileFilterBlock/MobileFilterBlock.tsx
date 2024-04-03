@@ -1,11 +1,15 @@
 import cl from "./MobileFilterBlock.module.scss";
 import FilterItem from "../FilterItem/FilterItem";
-import { connectionArray, companiesArray } from "../Main/Main";
 import openTabIco from "../../assets/opentabIco.svg";
 import { useState } from "react";
+import { useAppSelector } from "../../Hooks/hooks";
 
 function MobileFilterBlock() {
   const [visible, setVisible] = useState(false);
+
+  const { companiesArray, connectionArray } = useAppSelector(
+    (state) => state.flights
+  );
 
   return (
     <div className={cl.mobileFilterBlock}>

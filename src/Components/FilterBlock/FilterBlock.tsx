@@ -1,8 +1,12 @@
+import { useAppSelector } from "../../Hooks/hooks";
 import FilterItem from "../FilterItem/FilterItem";
 import cl from "./FilterBlock.module.scss";
-import { connectionArray, companiesArray } from "../Main/Main";
 
 function FilterBlock() {
+  const { companiesArray, connectionArray } = useAppSelector(
+    (state) => state.flights
+  );
+
   return (
     <div className={cl.filterBlock}>
       <FilterItem
