@@ -36,7 +36,7 @@ type FlightsState = {
   flightsConteiner: ITicket[];
   connectionArray: IConnectArrayItem[];
   companiesArray: ICompanyArrayItem[];
-  transfers: number[];
+  connetions: number[];
   status: string;
   error: any;
   initpos: number;
@@ -56,7 +56,7 @@ const initialState: FlightsState = {
     { name: "Red Wins", value: "redwings", filtredBy: false },
     { name: "S7 Airlines", value: "s7", filtredBy: false },
   ],
-  transfers: [],
+  connetions: [],
   status: "",
   error: "",
   initpos: 0,
@@ -105,16 +105,16 @@ const flightsSlice = createSlice({
         action.payload === item.value && (item.filtredBy = !item.filtredBy);
       });
 
-      !state.transfers.includes(action.payload)
-        ? state.transfers.push(action.payload)
-        : (state.transfers = state.transfers.filter(
+      !state.connetions.includes(action.payload)
+        ? state.connetions.push(action.payload)
+        : (state.connetions = state.connetions.filter(
             (item) => item !== action.payload
           ));
 
-      !state.transfers.length
+      !state.connetions.length
         ? (state.flights = state.flightsConteiner)
         : (state.flights = state.flightsConteiner.filter((item) =>
-            state.transfers.some(
+            state.connetions.some(
               (transfer) => transfer == item.connectionAmount
             )
           ));
