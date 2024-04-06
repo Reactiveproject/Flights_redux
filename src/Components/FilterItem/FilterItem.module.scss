@@ -60,12 +60,6 @@
     align-items: start;
     padding-left: 41px;
   }
-  & :checked + .checkbox {
-    position: absolute;
-    background-image: url(../../assets/cheked_ico.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
 }
 
 .checkbox {
@@ -81,6 +75,13 @@
     border: 1px solid white;
     margin-left: -30px;
   }
+}
+
+.activeCheckbox {
+  position: absolute;
+  background-image: url(../../assets/cheked_ico.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .radio {

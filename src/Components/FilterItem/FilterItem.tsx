@@ -3,21 +3,17 @@ import { useAppDispatch } from "../../Hooks/hooks";
 import {
   filtredByCompany,
   filtredByConnections,
+  IConnectArrayItem,
+  ICompanyArrayItem,
 } from "../../Store/FlightsSlice";
 
-function FilterItem({
-  title,
-  itemArray,
-  type,
-  // }: {
-  //   title: string;
-  //   itemArray: {
-  //     name: string;
-  //     value: string | number;
-  //     filtredBy: boolean;
-  //   }[];
-  //   type: string;
-}) {
+type TFilterItem = {
+  title: string;
+  itemArray: ICompanyArrayItem[] | IConnectArrayItem[];
+  type: string;
+};
+
+function FilterItem({ title, itemArray, type }: TFilterItem) {
   const dispatch = useAppDispatch();
 
   return (
@@ -29,7 +25,7 @@ function FilterItem({
             <label
               className={cl.filterItem}
               key={item.name}
-              onClick={() => {
+              onChange={() => {
                 type === "company"
                   ? dispatch(filtredByCompany(item.value))
                   : dispatch(filtredByConnections(item.value));
@@ -46,6 +42,8 @@ function FilterItem({
                     ? item.filtredBy
                       ? cl.radio + " " + cl.activeRadio
                       : cl.radio
+                    : item.filtredBy
+                    ? cl.checkbox + " " + cl.activeCheckbox
                     : cl.checkbox
                 }
               ></div>

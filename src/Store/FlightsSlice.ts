@@ -14,19 +14,19 @@ export interface ITicket {
   connectionAmount: number;
 }
 
-interface IConnectArrayItem {
+export interface IConnectArrayItem {
   name: string;
   value: number;
   filtredBy: boolean;
 }
 
-interface ICompanyArrayItem {
+export interface ICompanyArrayItem {
   name: string;
   value: string;
   filtredBy: boolean;
 }
 
-interface TicketTime {
+export interface TicketTime {
   startTime: string;
   endTime: string;
 }
@@ -36,6 +36,7 @@ type FlightsState = {
   flightsConteiner: ITicket[];
   connectionArray: IConnectArrayItem[];
   companiesArray: ICompanyArrayItem[];
+  transfers: number[];
   status: string;
   error: any;
   initpos: number;
@@ -55,7 +56,7 @@ const initialState: FlightsState = {
     { name: "Red Wins", value: "redwings", filtredBy: false },
     { name: "S7 Airlines", value: "s7", filtredBy: false },
   ],
-
+  transfers: [],
   status: "",
   error: "",
   initpos: 0,
@@ -85,11 +86,13 @@ const flightsSlice = createSlice({
   initialState,
   reducers: {
     sortByFlights(state: FlightsState, action: PayloadAction<number>) {
-      state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
+      state.flights = state.flightsConteiner.sort(
+        (a, b) => a[action.payload] - b[action.payload]
+      );
     },
     filtredByCompany(state: FlightsState, action: PayloadAction<string>) {
       state.flights = state.flightsConteiner.filter(
-        (item) => item.company === action.payload
+        (item: ITicket) => item.company === action.payload
       );
       state.companiesArray.map((item) => {
         action.payload === item.value
@@ -98,10 +101,25 @@ const flightsSlice = createSlice({
       });
     },
     filtredByConnections(state: FlightsState, action: PayloadAction<number>) {
-      console.log(action.payload);
-      state.flights = state.flightsConteiner.filter(
-        (item: ITicket) => item.connectionAmount === action.payload
-      );
+      state.connectionArray.map((item) => {
+        action.payload === item.value && (item.filtredBy = !item.filtredBy);
+      });
+
+      if (state.transfers.includes(action.payload)) {
+        state.transfers = state.transfers.filter(
+          (item) => item !== action.payload
+        );
+      } else {
+        state.transfers.push(action.payload);
+      }
+
+      !state.transfers.length
+        ? (state.flights = state.flightsConteiner)
+        : (state.flights = state.flightsConteiner.filter((item) =>
+            state.transfers.some(
+              (transfer) => transfer == item.connectionAmount
+            )
+          ));
     },
   },
   extraReducers: (builder) => {

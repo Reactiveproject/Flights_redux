@@ -1,9 +1,8 @@
 import cl from "./TicketsItem.module.scss";
-import { connectionArray } from "../Main/Main";
-
 import pobeda_logo from "../../assets/company_logos/pobeda_logo.svg";
 import red_logo from "../../assets/company_logos/redwings_logo.svg";
 import s7_logo from "../../assets/company_logos/S7_logo.svg";
+import { useAppSelector } from "../../Hooks/hooks";
 
 const logoArray = [
   { item: pobeda_logo, value: "pobeda" },
@@ -12,6 +11,8 @@ const logoArray = [
 ];
 
 function TicketsItem({ flight }) {
+  const { connectionArray } = useAppSelector((state) => state.flights);
+
   return (
     <div className={cl.tiketsItem}>
       <div className={cl.ticketInfo}>

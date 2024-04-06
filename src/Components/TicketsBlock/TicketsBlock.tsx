@@ -1,8 +1,9 @@
 import TicketsItem from "../TicketsItem/TicketsItem";
 import cl from "./TicketsBlock.module.scss";
 import SortBlock from "../SortBlock/SortBlock";
-import { useAppSelector } from "../../Hooks/hooks";
+
 import MobileFilterBlock from "../MobileFilterBlock/MobileFilterBlock";
+import { useAppSelector } from "../../Hooks/hooks";
 
 function TicketsBlock() {
   const { flights, error, status } = useAppSelector((state) => state.flights);
