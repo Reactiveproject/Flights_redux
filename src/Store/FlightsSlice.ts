@@ -105,13 +105,11 @@ const flightsSlice = createSlice({
         action.payload === item.value && (item.filtredBy = !item.filtredBy);
       });
 
-      if (state.transfers.includes(action.payload)) {
-        state.transfers = state.transfers.filter(
-          (item) => item !== action.payload
-        );
-      } else {
-        state.transfers.push(action.payload);
-      }
+      !state.transfers.includes(action.payload)
+        ? state.transfers.push(action.payload)
+        : (state.transfers = state.transfers.filter(
+            (item) => item !== action.payload
+          ));
 
       !state.transfers.length
         ? (state.flights = state.flightsConteiner)
