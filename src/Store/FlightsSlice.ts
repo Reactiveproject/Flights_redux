@@ -86,14 +86,15 @@ const flightsSlice = createSlice({
   initialState,
   reducers: {
     sortByFlights(state: FlightsState, action: PayloadAction<number>) {
-      state.flights = state.flightsConteiner.sort(
+      state.flights = state.flights.sort(
         (a, b) => a[action.payload] - b[action.payload]
       );
     },
     filtredByCompany(state: FlightsState, action: PayloadAction<string>) {
-      state.flights = state.flightsConteiner.filter(
-        (item: ITicket) => item.company === action.payload
-      );
+      state.flights = state.flightsConteiner.filter((item: ITicket) => {
+        item.company === action.payload;
+        // console.log(action.payload);
+      });
       state.companiesArray.map((item) => {
         action.payload === item.value
           ? (item.filtredBy = true)
