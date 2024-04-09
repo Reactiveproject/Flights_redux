@@ -1,12 +1,21 @@
 import TicketsItem from "../TicketsItem/TicketsItem";
 import cl from "./TicketsBlock.module.scss";
 import SortBlock from "../SortBlock/SortBlock";
-
 import MobileFilterBlock from "../MobileFilterBlock/MobileFilterBlock";
-import { useAppSelector } from "../../Hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
+import { useEffect } from "react";
+import { loadFligtsArray, changeInitPosition } from "../../Store/FlightsSlice";
 
 function TicketsBlock() {
-  const { flights, error, status } = useAppSelector((state) => state.flights);
+  const { flights, error, status, currentpage } = useAppSelector(
+    (state) => state.flights
+  );
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadFligtsArray());
+  }, [dispatch, currentpage]);
 
   return (
     <div className={cl.ticketsBlock}>
@@ -17,15 +26,16 @@ function TicketsBlock() {
       {flights.map((item) => {
         return <TicketsItem flight={item} key={item.id} />;
       })}
-      {/* <button
+
+      <button
         className={cl.button}
         type="submit"
         onClick={() => {
-          dispatch(changeInitPosition(3));
+          dispatch(changeInitPosition());
         }}
       >
         Загрузить еще билеты
-      </button> */}
+      </button>
     </div>
   );
 }
