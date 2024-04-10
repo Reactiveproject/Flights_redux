@@ -146,7 +146,6 @@ const flightsSlice = createSlice({
         loadFligtsArray.fulfilled,
         (state: FlightsState, action: PayloadAction<IServerData>) => {
           state.status = "resolved";
-          console.log(action.payload);
           state.flights = action.payload.data;
           state.flightsConteiner = action.payload.data;
           state.pages = action.payload.pages;

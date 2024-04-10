@@ -1,33 +1,26 @@
-# React + TypeScript + Vite
+Hi there!!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is PET project with React & redux toolkit steak.
 
-Currently, two official plugins are available:
+Project uses TypeScript for typisation modules and vars, Redux as state manager and Vite for compiling all modules.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+For run this project use this commands:
 
-## Expanding the ESLint configuration
+1. run fake server (npm json server): npm run server
+2. run dev mode in Vite: npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This project shows fake tickets service with async uploading array with information about flights.
+Projects have adaptive styles by SASS prepors and can by used in monitors from 425px weigth (lower not recomended, but works).
 
-- Configure the top-level `parserOptions` property like this:
+In this case were realised sort function in 3 ways:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+- fastes
+- cheapest
+- optimaised
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Also were realised 2 filtres:
 
-2 start server - npx json-server db.json
-https://www.npmjs.com/package/json-server?activeTab=readme
+- filter by company (selection by radio button)
+- filter by connection counts (multy-selection by checkbox buttons)
+
+At last added "Load-more" button wich upload 3 new cads with fligth information from fake server.
