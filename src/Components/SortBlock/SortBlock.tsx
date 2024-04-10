@@ -3,13 +3,7 @@ import { useAppDispatch } from "../../Hooks/hooks";
 import cl from "./SortBlock.module.scss";
 import { sortByFlights } from "../../Store/FlightsSlice";
 
-// type TSortProps = {
-//   type: string;
-//   title: string;
-//   key?: string;
-// };
-
-function SortBlock() {
+const SortBlock: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const sortMethodArray = [
@@ -42,6 +36,6 @@ function SortBlock() {
       })}
     </div>
   );
-}
+};
 
 export default SortBlock;

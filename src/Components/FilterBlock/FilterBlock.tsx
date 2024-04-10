@@ -2,7 +2,7 @@ import { useAppSelector } from "../../Hooks/hooks";
 import FilterItem from "../FilterItem/FilterItem";
 import cl from "./FilterBlock.module.scss";
 
-function FilterBlock() {
+const FilterBlock: React.FC = () => {
   const { companiesArray, connectionArray } = useAppSelector(
     (state) => state.flights
   );
@@ -21,6 +21,6 @@ function FilterBlock() {
       />
     </div>
   );
-}
+};
 
 export default FilterBlock;

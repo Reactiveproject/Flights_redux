@@ -1,7 +1,7 @@
 import cl from "./Header.module.scss";
 import logo from "../../assets/header_logo_1.svg";
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
     <div className={cl.header}>
       <div className={cl.headerLogo}>
@@ -10,4 +10,6 @@ export default function Header() {
       <div className={cl.headerText}>Поиск авиабилетов</div>
     </div>
   );
-}
+};
+
+export default Header;

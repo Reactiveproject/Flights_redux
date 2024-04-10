@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { useEffect } from "react";
 import { loadFligtsArray, changeInitPosition } from "../../Store/FlightsSlice";
 
-function TicketsBlock() {
+const TicketsBlock: React.FC = () => {
   const { flights, error, status, currentpage } = useAppSelector(
     (state) => state.flights
   );
@@ -38,6 +38,6 @@ function TicketsBlock() {
       </button>
     </div>
   );
-}
+};
 
 export default TicketsBlock;

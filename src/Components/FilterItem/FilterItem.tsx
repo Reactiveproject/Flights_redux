@@ -13,7 +13,7 @@ type TFilterItem = {
   type: string;
 };
 
-function FilterItem({ title, itemArray, type }: TFilterItem) {
+const FilterItem: React.FC<TFilterItem> = ({ title, itemArray, type }) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -22,20 +22,28 @@ function FilterItem({ title, itemArray, type }: TFilterItem) {
       <form className={cl.filterItemList}>
         {itemArray.map((item) => {
           return (
-            <label
-              className={cl.filterItem}
-              key={item.name}
-              onChange={() => {
-                type === "company"
-                  ? dispatch(filtredByCompany(item.value))
-                  : dispatch(filtredByConnections(item.value));
-              }}
-            >
-              <input
-                className={cl.input}
-                type={type === "company" ? "radio" : "checkbox"}
-                value={item.value}
-              />
+            <label className={cl.filterItem} key={item.name}>
+              {type === "company" && (
+                <input
+                  className={cl.input}
+                  type="radio"
+                  value={item.value}
+                  name="company"
+                  onChange={() => {
+                    dispatch(filtredByCompany(item.value));
+                  }}
+                />
+              )}
+              {type === "connection" && (
+                <input
+                  className={cl.input}
+                  type="checkbox"
+                  value={item.value}
+                  onChange={() => {
+                    dispatch(filtredByConnections(item.value));
+                  }}
+                />
+              )}
               <div
                 className={
                   type === "company"
@@ -54,6 +62,6 @@ function FilterItem({ title, itemArray, type }: TFilterItem) {
       </form>
     </div>
   );
-}
+};
 
 export default FilterItem;

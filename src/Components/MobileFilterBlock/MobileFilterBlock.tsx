@@ -4,7 +4,7 @@ import openTabIco from "../../assets/opentabIco.svg";
 import { useState } from "react";
 import { useAppSelector } from "../../Hooks/hooks";
 
-function MobileFilterBlock() {
+const MobileFilterBlock: React.FC = () => {
   const [visible, setVisible] = useState(false);
 
   const { companiesArray, connectionArray } = useAppSelector(
@@ -46,6 +46,6 @@ function MobileFilterBlock() {
       )}
     </div>
   );
-}
+};
 
 export default MobileFilterBlock;

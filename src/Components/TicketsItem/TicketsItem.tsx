@@ -3,6 +3,7 @@ import pobeda_logo from "../../assets/company_logos/pobeda_logo.svg";
 import red_logo from "../../assets/company_logos/redwings_logo.svg";
 import s7_logo from "../../assets/company_logos/S7_logo.svg";
 import { useAppSelector } from "../../Hooks/hooks";
+import { ITicket } from "../../Store/FlightsSlice";
 
 const logoArray = [
   { item: pobeda_logo, value: "pobeda" },
@@ -10,7 +11,12 @@ const logoArray = [
   { item: s7_logo, value: "s7" },
 ];
 
-function TicketsItem({ flight }) {
+type TicketsItemProps = {
+  flight: ITicket;
+  key: number;
+};
+
+const TicketsItem: React.FC<TicketsItemProps> = ({ flight }) => {
   const { connectionArray } = useAppSelector((state) => state.flights);
 
   return (
@@ -58,6 +64,6 @@ function TicketsItem({ flight }) {
       </div>
     </div>
   );
-}
+};
 
 export default TicketsItem;

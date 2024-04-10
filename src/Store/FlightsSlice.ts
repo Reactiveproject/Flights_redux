@@ -1,6 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 
+export interface IServerData {
+  data: ITicket[];
+  length: number;
+  first: number;
+  items: number;
+  last: number | null;
+  next: number | null;
+  pages: number | null;
+  prev: number | null;
+}
 export interface ITicket {
   id: number;
   from: string;
@@ -36,9 +46,9 @@ type FlightsState = {
   flightsConteiner: ITicket[];
   connectionArray: IConnectArrayItem[];
   companiesArray: ICompanyArrayItem[];
-  connetions: number[];
+  connections: number[];
   status: string;
-  error: string;
+  error: string | undefined;
   currentpage: number;
   pages: number | null;
 };
@@ -53,41 +63,35 @@ const initialState: FlightsState = {
     { name: "3 пересадки", value: 3, filtredBy: false },
   ],
   companiesArray: [
+    { name: "Все компании", value: "all", filtredBy: true },
     { name: "Победа", value: "pobeda", filtredBy: false },
     { name: "Red Wins", value: "redwings", filtredBy: false },
     { name: "S7 Airlines", value: "s7", filtredBy: false },
   ],
-  connetions: [],
+  connections: [],
   status: "",
   error: "",
   currentpage: 1,
   pages: null,
 };
 
-export const loadFligtsArray = createAsyncThunk(
-  "flights/loadFligtsArray",
-  async function (_, { rejectWithValue, getState }) {
-    const curpage = getState().flights.currentpage;
-    console.log(curpage);
+export const loadFligtsArray = createAsyncThunk<
+  IServerData,
+  undefined,
+  { rejectValue: string; state: { flights: FlightsState } }
+>("flights/loadFligtsArray", async function (_, { rejectWithValue, getState }) {
+  const curpage: number = getState().flights.currentpage;
 
-    try {
-      const response = await fetch(
-        `http://localhost:3001/fligths?_page=${curpage}&_per_page=3`
-        // "http://localhost:3001/fligths"
-      );
+  const response = await fetch(
+    `http://localhost:3001/fligths?_page=${curpage}&_per_page=3`
+  );
 
-      if (!response.ok) {
-        throw new Error("Server Error");
-      }
-      const data = await response.json();
-      console.log(data);
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+  if (!response.ok) {
+    return rejectWithValue("Ошибка загрузки!!");
   }
-);
+  const data = await response.json();
+  return data;
+});
 
 const flightsSlice = createSlice({
   name: "flights",
@@ -97,10 +101,11 @@ const flightsSlice = createSlice({
       state.flights.sort((a, b) => a[action.payload] - b[action.payload]);
     },
     filtredByCompany(state: FlightsState, action: PayloadAction<string>) {
-      state.flights = state.flightsConteiner.filter((item: ITicket) => {
-        item.company === action.payload;
-        console.log(action.payload);
-      });
+      action.payload === "all"
+        ? (state.flights = state.flightsConteiner)
+        : (state.flights = state.flightsConteiner.filter(
+            (item) => item.company === action.payload
+          ));
       state.companiesArray.map((item) => {
         action.payload === item.value
           ? (item.filtredBy = true)
@@ -111,23 +116,22 @@ const flightsSlice = createSlice({
       state.connectionArray.map((item) => {
         action.payload === item.value && (item.filtredBy = !item.filtredBy);
       });
-
-      !state.connetions.includes(action.payload)
-        ? state.connetions.push(action.payload)
-        : (state.connetions = state.connetions.filter(
+      !state.connections.includes(action.payload)
+        ? state.connections.push(action.payload)
+        : (state.connections = state.connections.filter(
             (item) => item !== action.payload
           ));
 
-      !state.connetions.length
+      !state.connections.length
         ? (state.flights = state.flightsConteiner)
         : (state.flights = state.flightsConteiner.filter((item) =>
-            state.connetions.some(
+            state.connections.some(
               (transfer) => transfer == item.connectionAmount
             )
           ));
     },
     changeInitPosition(state: FlightsState) {
-      state.pages > state.currentpage
+      state.pages && state.pages > state.currentpage
         ? (state.currentpage = state.currentpage + 1)
         : (state.currentpage = 1);
       console.log(state.currentpage);
@@ -135,18 +139,20 @@ const flightsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadFligtsArray.pending, (state) => {
+      .addCase(loadFligtsArray.pending, (state: FlightsState) => {
         state.status = "loading";
       })
-      .addCase(loadFligtsArray.fulfilled, (state, action) => {
-        console.log(action.payload);
-
-        state.status = "resolved";
-        state.flights = action.payload.data;
-        state.flightsConteiner = action.payload.data;
-        state.pages = action.payload.pages;
-      })
-      .addCase(loadFligtsArray.rejected, (state, action) => {
+      .addCase(
+        loadFligtsArray.fulfilled,
+        (state: FlightsState, action: PayloadAction<IServerData>) => {
+          state.status = "resolved";
+          console.log(action.payload);
+          state.flights = action.payload.data;
+          state.flightsConteiner = action.payload.data;
+          state.pages = action.payload.pages;
+        }
+      )
+      .addCase(loadFligtsArray.rejected, (state: FlightsState, action) => {
         state.status = "rejected";
         state.error = action.payload;
       });
